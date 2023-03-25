@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+  <style>
+
+    img {
+      max-width: 70%;
+    }
+
+    .image-center {
+      display: block;
+      margin: 10px auto;
+    }
+  
+    .form {
+      margin: 0 auto;
+      width: 50%;
+      margin-bottom: 100px;
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <h1 id="title" class="text-center">Welcome to my website.</h1>
+  <div class="row">
+    <article class="col-sm-8">
+      <p>My website is very important because I have many important things
+        to say. Here is a picture of a puppy in a cup: </p>
+      <img src="pup-in-cup.jpg" alt="Puppy in Cup">
+      <p>Here are some more thoughts: Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Cum harum labore veritatis, possimus
+        facilis quas repellat, explicabo, ad commodi ipsum quidem nostrum
+        earum pariatur fugit! Magni sunt nulla impedit! Facilis.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, natus
+        qui nostrum libero atque hic distinctio sint facilis nihil possimus
+        tenetur deserunt rerum laboriosam cum quisuam doloremque ducimus
+        error.</p>
+      <p>Rerum debitis aspernatur, ipsum animi! Quis ullam dolore blanditiis
+        accusantium eius minus tempore, iure maxime similique vel! Possimus
+        reprehenderit autem, recusandae quos laudantium nesciunt libero suscipit
+        officia rerum, et.</p>
+      <p>Aliquam harum at soluta id esse perspiciatis, nesciunt corporis nostrum
+        commodi, dolorum, repellat possimus a cumque. Id sed explicabo, quaerat
+        sit esse facere, voluptatem, odit nesciunt eveniet assumenda, error!</p>
+      <p>Consequuntur porro, nobis placeat, labore magni aliquam repellendus
+        consequatur hic facere, molestiae dolorum suscipit quos sint, minima
+        Quibusdam voluptatem est hic, corporis. Officiis delectus, consectetur
+        harum reiciendis perferendis.</p>
+    </article>
+    <aside class="col-sm-4">
+      <h4>I love lists. Here's why.</h4>
+      <ol>
+        <li>Sometimes they're numbered, and numbers are great.</li>
+        <li>Sometimes they're not, and that's okay too.</li>
+        <li>I don't have the attention span to read paragraphs.</li>
+        <li>Hey look, there's a puppy!</li>
+      </ol>
+    </aside>
+  </div>
+  <div class="row mb-5">
+    <div class="col-sm-4">
+      Red
+      <input class="form-control" type="number" min="0" max="255" value="255">
+    </div>
+    <div class="col-sm-4">
+      Blue
+      <input class="form-control" type="number" min="0" max="255" value="255">
+    </div>
+    <div class="col-sm-4">
+      Green
+      <input class="form-control" type="number" min="0" max="255" value="255">
+    </div>
+  </div>
+</div>
+
+<div class="form">
+  <h4>Mutiny's Movie Ratings</h4>
+      <form id="movieRatingForm">
+        <label for="movie">Enter Movie Title</label>
+        <input type="text" id="movie"/>
+        <label for="rating">Enter Moive Rating 0-10</label>
+        <input type="number" id="rating" name="rating" min="0" max="10"/>
+        <button>submit</button>
+        <ul id="movieList"></ul>
+      </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+  // Add your code here!
+  // jQuery DOM Practice Exercise
+
+// document.addEventListener("DOMContentLoaded", function(event) {
+  $(document).ready(function() {
+    // Your code to manipulate the DOM goes here
+    console.log("Let's gets ready to party with jQuery");
+  });
+
+
+  // $('article').addClass('img', 'image-center');
+  $("article img").addClass("image-center");
+
+
+  $('p').eq(5).remove();
+
+
+  let randomSize = Math.floor(Math.random() * 101);
+  $('h1').css('font-size', randomSize + 'px');
+  
+
+  $('ol').append('<li>Welcome To Mutiny!</li>');
+
+
+  // $('aside').replaceWith("Welome to lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare ligula id risus imperdiet, id ultricies dolor gravida. Praesent dapibus felis vel nibh varius bibendum. Suspendisse potenti. Donec eu ante eget mi blandit pharetra vitae in enim. In ultricies tellus nec urna pretium ullamcorper. Sed pretium tincidunt lectus vel dignissim. Fusce ac dui a quam hendrerit suscipit.");
+$('aside').empty().append($("<p>", {text: "The Mutiny Act of 1803 effected a great constitutional change in this respect: the power of the crown to make any Articles of War became altogether statutory, and the prerogative merged in the act of Parliament. The Mutiny Act 1873 was passed in this manner."}));
+
+
+$('.form-control').on('keyup blur change', function() {
+  let red = $('.form-control').eq(0).val();
+  let blue = $('.form-control').eq(1).val();
+  let green = $('.form-control').eq(2).val();
+  $("body").css("background-color", "rgb(" + red + ", " + green + ", " + blue + ")");
+});
+
+
+  $('img').on('click', function() {
+    $(this).remove();
+  })
+
+// movie ratings
+// $(document).ready(function() { 
+//   let movieForm = $("#movieRatingForm")[0];
+//   let movieList = $("#movieList")[0];
+
+//   $('button').on('click'), function(event) {
+//     event.preventDefault();
+
+//   // let removeButton = $("<button>X</button>");
+  
+//   let value1 = $("#movie").val();
+//   let value2 = $("#rating").val();
+
+//   let newMovie = $('<li>').text(value1);
+//   let newRating = $('<li>').text(value2);
+
+//   $('#movieList').append(newMovie);
+//   $('#movieList').append(newRating);
+//   $('#movieList li:last-child').append('<button class="delete-btn">Delete</button>');
+
+//   movieForm.reset();
+//   }
+// });
+
+$(document).ready(function() {
+  let movieForm = $("#movieRatingForm")[0];
+  let movieList = $("#movieList")[0];
+
+  $('button').on('click', function(event) {
+    event.preventDefault();
+
+    let value1 = $("#movie").val();
+    let value2 = $("#rating").val();
+
+    let newValue = value1 + "  " + value2;
+    let newLi = $("<li>").text(newValue);
+    
+    $('#movieList').append(newLi);
+
+    // let newMovie = $('<li>').text(value1);
+    // let newRating = $('<li>').text(value2);
+
+    // $('#movieList').append(newMovie, newRating);
+    $('#movieList li:last-child').append('<button class="delete-btn">Delete</button>');
+
+    movieForm.reset();
+  });
+});
+
+</script>
+</body>
+
+</html>
